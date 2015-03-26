@@ -12,6 +12,11 @@ This project is open source, so any suggestions and improvements are welcome.
 [airfeed Reference (draft-0)](Reference.md)
 
 ## Summary
+### Feeds
+Single feed item is same as used schema.
+
+- **[Collection](Reference.md#Collection)**
+
 ### Schemas
 All schemas are defined in [JSON Schema](http://json-schema.org) format and can also be used separately (stored in [`schema/`](/schema) directory).
 
@@ -24,6 +29,9 @@ All schemas are defined in [JSON Schema](http://json-schema.org) format and can 
 - **[Flight](Reference.md#Flight)** ([json](/schema/flight.json))
 - **Incident** - planned
 - **Reservation** - planned
+
+## TODO
+- Examples
 
 ## Credits
 
