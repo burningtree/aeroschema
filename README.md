@@ -14,7 +14,7 @@ This project is open source, so any suggestions and improvements are welcome.
 ## Summary
 
 ### Feeds
-- **[Collection](Reference.md#Collection)**
+- **[Collection](Reference.md#collection)**
 
 ### Schemas
 All schemas are defined in [JSON Schema](http://json-schema.org) format and can also be used separately (stored in [`schema/`](/schema) directory).
@@ -25,7 +25,7 @@ All schemas are defined in [JSON Schema](http://json-schema.org) format and can 
 - **Airline** - in progress
 - **Airport** - in progress
 - **BoardingPass** - planned
-- **[Flight](Reference.md#Flight)** ([json](/schema/flight.json))
+- **[Flight](Reference.md#flight)** ([json](/schema/flight.json))
 - **Incident** - planned
 - **Reservation** - planned
 
