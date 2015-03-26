@@ -2,19 +2,18 @@
 **Open Air Transport Feed Specification** (draft)
 
 ## Introduction
-Main goal is to create a unified format (and schemas) for handling passengers-oriented air transport data. These will include real-time informations like delays, departure gates, waiting times at security and so on. Preferred transport format is JSON or [msgpack](http://msgpack.org).
+Main goal is to create a unified format (and schemas) for handling passengers-oriented air transport data. These will include real-time informations like delays, departure gates, waiting times at security and so on. Recommended transport format is JSON or [msgpack](http://msgpack.org).
 
 This project is open source, so any suggestions and improvements are welcome.
 
 **Warning: This specification is under construction, and definitely not suitable for production use. Use at your own risk.**
 
 ### Docs
-[airfeed Reference (draft-0)](Reference.md)
+- [airfeed Reference (draft-0)](Reference.md)
 
 ## Summary
-### Feeds
-Single feed item is same as used schema.
 
+### Feeds
 - **[Collection](Reference.md#Collection)**
 
 ### Schemas
