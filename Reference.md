@@ -25,19 +25,16 @@
     {
       flight: {
         date: "2014-03-26",
-        ident: {
-          full_no: "FR1234"
-        },
+        ident: "FR1234",
         status: {
           code: "cancelled"
+          msg: "Flight cancelled due to bad weather at destination."
         }
       }
     },
     {
       flight: {
-        ident: {
-          full_no: "OK9922"
-        },
+        ident: "OK9922",
         rt: {
           coords: [ 50.0833, 14.4167 ],
           speed: 470
@@ -45,7 +42,7 @@
       }
     },
   ],
-  count: 1,
+  count: 2,
   time: "2015-03-26T04:57:02.643"
 }
 ```
@@ -65,7 +62,7 @@ All schemas are defined in [JSON Schema](http://json-schema.org) format and can 
 **times** | *Object [Flight.times](#flighttimes)* | Flight departure and arrival times. | `{ std: "17:00", sta: "18:15" }`
 **aircraft** | *Object [Flight.aircraft](#flightaircraft)* | Info about aircraft. | `{ model: "319" }`
 **status** | *String [Flight.status](#flightstatus)* | Flight status. See [Flight.status](#flightstatus). | `{ code: "departed" }`
-**status_history** | *Array of [Flight.status](#flighthistoryitem)* | Flight status history. | `[ { code: "cancelled", time: "2015-03-26T03:37:38.654Z" } ]`
+**status_history** | *Array of [Flight.status](#flightstatus)* | Flight status history. | `[ { code: "cancelled", time: "2015-03-26T03:37:38.654Z" } ]`
 **params** | *Object [Flight.params](#flightparams)* | Basic flight parameters. | `{ soldout: true }`
 **stats** | *Object [Flight.stats](#flightstats)* | Common statistics. | `{ load_factor: 99 }`
 **rt** | *Object [Flight.rt](#flightrt)* | Current real-time information - flight position, track and other. | `{ coords: [ 50.0833, 14.4167 ], alt: 1000, speed: 812, track: 108 }`
