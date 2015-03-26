@@ -1,15 +1,17 @@
-# airfeed
-**Open Air Transport Feed Specification** (draft)
+# aeroschema
+**Open Air Transport Schema Specification** (draft)
 
 ## Introduction
-Main goal is to create a unified format (and schemas) for handling passengers-oriented air transport data. These will include real-time informations like delays, departure gates, waiting times at security and so on. Recommended transport format is JSON or [msgpack](http://msgpack.org).
+Main goal is to create a unified format (and schemas) for exchange passengers-oriented air transport data. These will include real-time informations like delays, departure gates, waiting times at security and so on. Recommended transport format is JSON or [msgpack](http://msgpack.org).
+
+This schema does not want to compete with professional specifications such as [AIXM](http://www.aixm.aero), but wants to complement it and its suitable for the general public.
 
 This project is open source, so any suggestions and improvements are welcome.
 
-**Warning: This specification is under construction, and definitely not suitable for production use. Use at your own risk.**
+**Warning: This specification is under development and not suitable for production use. Use at your own risk.**
 
 ### Docs
-- [airfeed Reference (draft-0)](Reference.md)
+- [Aeroschema Reference (draft-0)](Reference.md)
 
 ## Summary
 
@@ -38,5 +40,5 @@ All schemas are defined in [JSON Schema](http://json-schema.org) format and can 
 
 ## LICENCE
 
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">airfeed</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Aeroschema</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
 
