@@ -1,4 +1,4 @@
-# airfeed Reference (draft-0)
+# Aeroschema Reference (draft-0)
 
 
 ### Table of contents

@@ -2,7 +2,7 @@
 **Open Air Transport Schema Specification** (draft)
 
 ## Introduction
-Main goal is to create a unified format (and schemas) for exchange passengers-oriented air transport data. These will include real-time informations like delays, departure gates, waiting times at security and so on. Recommended transport format is JSON or [msgpack](http://msgpack.org).
+Main goal is to create an unified format (and schemas) for exchange passengers-oriented air transport data. These will include real-time informations like delays, departure gates, waiting times at security and so on. Recommended transport format is JSON or [msgpack](http://msgpack.org).
 
 This schema does not want to compete with professional specifications such as [AIXM](http://www.aixm.aero), but wants to complement it and its suitable for the general public.
 

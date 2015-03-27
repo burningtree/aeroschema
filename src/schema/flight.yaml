@@ -1,0 +1,163 @@
+description: Flight
+type: object
+definitions:
+  airport:
+    type: object
+    properties:
+      iata:
+        type: string
+        format: '^[A-Z]{3}$'
+      icao:
+        type: string
+        format: '^[A-Z]{4}$'
+      name:
+        type: string
+  date:
+    type: string
+    pattern: '^\d{4}-\d{2}-\d{2}$'
+  time:
+    type: string
+    pattern: '^\d{2}:\d{2}(:\d{2})?$'
+  status:
+    type: object
+    properties:
+      code:
+        type: string
+        enum:
+          - departed
+      msg:
+        type: string
+      delay:
+        type: number
+      time:
+        type: string
+  rt:
+    type: object
+    properties:
+      coords:
+        type: array
+        items:
+          type: number
+        minItems: 2
+        maxItems: 2
+      alt:
+        type: number
+      speed:
+        type: number
+      track:
+        type: number
+      squawk:
+        type: number
+        minimum: 1000
+        maximum: 9999
+properties:
+  ident:
+    oneOf:
+      - type: string
+        pattern: '^\w{2,3}\d{1,4}$'
+      - type: object
+        properties:
+          no:
+            type: number
+          no_full:
+            type: string
+  date:
+    $ref: "#/definitions/date"
+  date_arrival:
+    $ref: "#/definitions/date"
+  airline:
+    type: object
+    properties:
+      iata:
+        type: string
+        pattern: '^[A-Z]{2}$'
+      icao:
+        type: string
+        pattern: '^[A-Z]{3}$'
+      name:
+        type: string
+  orig:
+    $ref: "#/definitions/airport"
+  dest:
+    $ref: "#/definitions/airport"
+  times:
+    type: object
+    properties:
+      std:
+        $ref: "#/definitions/time"  
+      sta:
+        $ref: "#/definitions/time"  
+      etd:
+        $ref: "#/definitions/time"  
+      eta:
+        $ref: "#/definitions/time"  
+      atd:
+        $ref: "#/definitions/time"  
+      ata:
+        $ref: "#/definitions/time"  
+      rtd:
+        $ref: "#/definitions/time"  
+      rta:
+        $ref: "#/definitions/time"  
+      gtd:
+        $ref: "#/definitions/time"  
+      gta:
+        $ref: "#/definitions/time"  
+      xtd:
+        $ref: "#/definitions/time"  
+      xta:
+        $ref: "#/definitions/time"  
+  aircraft:
+    type: object
+    properties:
+      model:
+        type: string
+      reg:
+        type: string
+  status:
+    oneOf:
+      - $ref: "#/definitions/status"
+      - $ref: "#/definitions/status/properties/code"
+  status_history:
+    type: array
+    items:
+      $ref: "#/definitions/status"
+  params:
+    type: object
+    properties:
+      soldout:
+        type: boolean
+      cancelled:
+        type: boolean
+      diverted:
+        type: boolean
+      delayed:
+        type: boolean
+      flying:
+        type: boolean
+  stats:
+    type: object
+    properties:
+      seats_sold:
+        type: number
+      seats_available:
+        type: number
+      load_factor:
+        type: number
+      pax:
+        type: number
+      pilots:
+        type: number
+      crew:
+        type: number
+      crew_all:
+        type: number
+  rt:
+    $ref: "#/definitions/rt"
+  rt_history:
+    type: array
+    items:
+      $ref: "#/definitons/rt"
+  time:
+    type: string
+

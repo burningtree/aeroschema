@@ -1,0 +1,28 @@
+ident: DY1502
+date: !!str 2015-03-27
+date_arrival: !!str 2015-03-28
+airline:
+  iata: DY
+  icao: NAX
+  name: Norwegian
+orig:
+  icao: ENGM
+  name: Oslo
+dest:
+  iata: PRG
+  name: Prague
+times:
+  std: !!str 19:00
+  atd: !!str 19:08
+aircraft:
+  model: 73H
+status:
+  code: departed
+  delay: 8
+params:
+  flying: true
+  soldout: false
+rt:
+  coords: [ 50.532, 19.231 ]
+  speed: 560
+time: !!str 2015-03-27T01:38:05.419
