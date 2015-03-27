@@ -1,0 +1,66 @@
+{
+  "ident": {
+    "icao": "LKPR",
+    "iata": "PRG"
+  },
+  "name": "Václav Havel Airport Prague",
+  "country": "CZE",
+  "tz": "Europe/Prague",
+  "coords": [
+    50.100833,
+    14.26
+  ],
+  "elevation": 1247,
+  "runways": [
+    {
+      "direction": "06/24",
+      "length": 12191,
+      "surface": "concrete",
+      "active": true
+    },
+    {
+      "direction": "12/30",
+      "length": 10665,
+      "surface": "concrete",
+      "active": true
+    },
+    {
+      "direction": "04/22",
+      "length": 6955,
+      "surface": "asphaltic-concrete",
+      "active": false
+    }
+  ],
+  "helipads": [
+    {
+      "number": "H2",
+      "length": 11.2,
+      "surface": "asphalt"
+    }
+  ],
+  "terminals": [
+    {
+      "name": "Terminal 1",
+      "shortname": "T1"
+    },
+    {
+      "name": "Terminal 2",
+      "shortname": "T2"
+    },
+    {
+      "name": "Terminal 3",
+      "shortname": "T3"
+    },
+    {
+      "name": "Terminal 4",
+      "shortname": "T4"
+    }
+  ],
+  "url": "http://www.prg.aero",
+  "refs": [
+    {
+      "type": "wikipedia",
+      "value": "http://en.wikipedia.org/wiki/V%C3%A1clav_Havel_Airport_Prague"
+    }
+  ]
+}

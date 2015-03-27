@@ -25,9 +25,9 @@ All schemas are defined in [JSON Schema](http://json-schema.org) format and can 
 - **AircraftModel** - planned
 - **AircraftSeating** - planned
 - **Airline** - in progress
-- **Airport** - in progress
+- **[Airport](Reference.md#airport)** ([json](schema/airport.json))
 - **BoardingPass** - planned
-- **[Flight](Reference.md#flight)** ([json](/schema/flight.json))
+- **[Flight](Reference.md#flight)** ([json](schema/flight.json))
 - **Incident** - planned
 - **Reservation** - planned
 

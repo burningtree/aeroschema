@@ -1,0 +1,87 @@
+description: Airport
+type: object
+definitions:
+  surface:
+    type: string
+    enum:
+      - concrete
+      - asphaltic-concrete
+      - asphalt
+properties:
+  ident:
+    type: object
+    properties:
+      icao:
+        type: string
+      iata:
+        type: string
+  name:
+    type: string
+  country:
+    type: string
+    pattern: "^[A-Z]{3}$"
+    description: ISO 3166-1 alpha-3 code
+  tz:
+    type: string
+    description: tz database code
+  coords:
+    type: array
+    minItems: 2
+    maxItems: 2
+    items:
+      type: number
+  elevation:
+    type: number
+    description: ft
+  runways:
+    type: array
+    items:
+      type: object
+      properties:
+        direction:
+          type: string
+          pattern: '^\d{2}\/\d{2}$'
+        length:
+          type: number
+          description: ft
+        surface:
+          $ref: "#/definitions/surface"
+        active:
+          type: boolean
+  helipads:
+    type: array
+    items:
+      type: object
+      properties:
+        number:
+          type: string
+        length:
+          type: number
+          description: ft
+        surface:
+          $ref: "#/definitions/surface"
+  terminals:
+    type: array
+    items:
+      type: object
+      properties:
+        name:
+          type: string
+        shortname:
+          type: string
+  url: 
+    type: string
+  refs:
+    type: array
+    items:
+      type: object
+      properties:
+        type:
+          type: string
+        value:
+          type: string
+
+
+
+
+
