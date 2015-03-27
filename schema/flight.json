@@ -242,7 +242,7 @@
     "rt_history": {
       "type": "array",
       "items": {
-        "$ref": "#/definitons/rt"
+        "$ref": "#/definitions/rt"
       }
     },
     "time": {
