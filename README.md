@@ -2,13 +2,13 @@
 **Open Air Transport Schema Specification** (draft-0)
 
 ## Introduction
-Main goal is to create a unified schemas for exchange passengers-oriented air transport data. These will include real-time informations like delays, departure gates, waiting times at security and so on. Recommended transport format is JSON or [msgpack](http://msgpack.org).).
+Main goal is to create a unified schemas for exchange passengers-oriented air transport data. These will include real-time informations like delays, departure gates, waiting times at security and so on. Recommended transport format is JSON or [msgpack](http://msgpack.org) and all schemas are defined in [JSON Schema](http://json-schema.org) format.
 
-This schema does not want to compete with professional specifications such as [AIXM](http://www.aixm.aero), but wants to complement it and its suitable for the general public.
+This specification does not want to compete with professional specifications such as [AIXM](http://www.aixm.aero), but wants to complement it and its suitable for the general public.
 
 This project is open source, so any suggestions and improvements are welcome.
 
-**Warning: This specification is under development and not suitable for production use. Use at your own risk.**
+**Warning: This schema are under development and not suitable for production use. Use at your own risk.**
 
 ### Docs
 - [Aeroschema Reference (draft-0)](Reference.md)
@@ -38,7 +38,7 @@ All schemas are defined in [JSON Schema](http://json-schema.org) format and can 
 - [json-schema-benchmark](https://github.com/ebdrup/json-schema-benchmark) - Benchmark for Node.js validators
 
 ## TODO
-- geojson for airporte?
+- geojson for airports/route?
 
 ## Name change proposals
 - airjson
