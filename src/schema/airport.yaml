@@ -7,6 +7,25 @@ definitions:
       - concrete
       - asphaltic-concrete
       - asphalt
+  wait_time:
+    oneOf:
+      - type: string
+        pattern: '^[<>]?\d+$'
+      - type: number
+    description: in minutes
+  coords:
+    type: array
+    minItems: 2
+    maxItems: 2
+    items:
+      type: number
+  features:
+    type: string
+    enum:
+      - free-wifi
+      - payable-wifi
+      - open-nonstop
+      - sleep-forbidden
 properties:
   ident:
     type: object
@@ -15,21 +34,63 @@ properties:
         type: string
       iata:
         type: string
+      geonames:
+        type: number
+        description: GeoNames ID
   name:
     type: string
+  domain:
+    type: string
+    description: Internet domain
+  aliases:
+    type: array
+    items:
+      type: object
+      properties:
+        lang:
+          type: string
+          description: three-letter ISO 639-3 language code
+        value:
+          type: string
+        preferred:
+          type: boolean
+        historical:
+          type: boolean
+        colloquial:
+          type: boolean
+  continent:
+    type: string
+    enum:
+      - AF  # Africa
+      - AS  # Asia
+      - EU  # Europe
+      - NA  # North America
+      - SA  # South America
+      - OC  # Oceania
+      - AN  # Antarctica
+  region:
+    type: string
+    pattern: "^[A-Z]{2}-[A-Z]{2}$"
+    description: ISO 3166-2 region code
   country:
     type: string
     pattern: "^[A-Z]{3}$"
     description: ISO 3166-1 alpha-3 code
-  tz:
+  served:
+    type: array
+    items:
+      type: object
+      properties:
+        name:
+          type: string
+        geonames:
+          type: number
+          description: GeoNames city ID
+  timezone:
     type: string
     description: tz database code
   coords:
-    type: array
-    minItems: 2
-    maxItems: 2
-    items:
-      type: number
+    $ref: "#/definitions/coords"
   elevation:
     type: number
     description: ft
@@ -44,6 +105,10 @@ properties:
         length:
           type: number
           description: ft
+        size:
+          type: string
+          description: dimension (l x h)
+          pattern: '^\d+x\d+$'
         surface:
           $ref: "#/definitions/surface"
         active:
@@ -67,10 +132,48 @@ properties:
       properties:
         name:
           type: string
-        shortname:
+        alias:
           type: string
-  url: 
-    type: string
+        public:
+          type: boolean
+        coords:
+          $ref: "#/definitions/coords"
+        features: 
+          $ref: "#/definitions/features"
+  website: 
+    oneOf:
+      - type: string
+      - type: object
+        properties:
+          url:
+            type: string
+          url_mobile:
+            type: string
+          mobile_ready:
+            type: boolean
+          languages:
+            type: array
+            items:
+              type: object
+              properties:
+                lang:
+                  type: string
+                  pattern: '^[a-z]{2}(\-[a-z]{2})?$'
+                url:
+                  type: string
+                url_mobile:
+                  type: string
+                primary:
+                  type: boolean
+          features:
+            type: array
+            items:
+              type: string
+              enum:
+                - sms-info
+                - webcam
+                - waiting-times
+                - map
   refs:
     type: array
     items:
@@ -80,8 +183,74 @@ properties:
           type: string
         value:
           type: string
-
-
-
-
+  waiting_times:
+    type: object
+    properties:
+      security:
+        type: array
+        items:
+          type: object
+          properties:
+            terminal:
+              type: string
+            area:
+              type: string
+            time:
+              $ref: "#/definitions/wait_time"
+  webcams:
+    type: array
+    items:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of webcam
+        terminal:
+          type: string
+          description: Terminal name or alias
+        fps:
+          type: number
+          description: Frames per second
+        resolution:
+          type: string
+          pattern: '^(\d+)x(\d+)$'
+          description: Resolution in pixels
+        url:
+          type: string
+        raw_url:
+          type: string
+  apps:
+    type: array
+    items:
+      type: object
+      properties:
+        platform:
+          type: string
+          enum:
+            - ios
+            - android
+            - wp   # windows-phone
+            - firefox
+            - blackberry
+            - linux
+            - osx
+            - windows
+        id:
+          oneOf:
+            - type: string
+            - type: number
+        url:
+          type: string
+  features:
+    type: array
+    items:
+      $ref: "#/definitions/features"
+  opening_hours:
+    type: object
+    patternProperties:
+      '^(mo|tu|we|th|fr|sa|su|all)(-(mo|tu|we|th|fr|sa|su))?$':
+        type: string
+        pattern: '^\d{2}:\d{2}\-\d{2}:\d{2}$'
+    additionalProperties: false
+      
 

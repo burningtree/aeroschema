@@ -15,6 +15,18 @@
         },
         "name": {
           "type": "string"
+        },
+        "terminal": {
+          "type": "string"
+        },
+        "gate": {
+          "type": "string"
+        },
+        "belt": {
+          "type": "string"
+        },
+        "exit": {
+          "type": "string"
         }
       }
     },

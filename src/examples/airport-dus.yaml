@@ -1,0 +1,15 @@
+ident:
+  iata: DUS
+webcams:
+  - name: Aircraft Handling
+    raw_url: 'rtmp://stream-5gw.1000eyes.de/rtplive/dus8a21.stream'
+  - name: 'Check-in Area'
+    raw_url: 'rtmp://stream-5gw.1000eyes.de/rtplive/dus0600.stream'
+    resolution: 640x400
+  - name: Apron
+    raw_url: 'rtmp://stream-5gw.1000eyes.de/rtplive/dusbc0c.stream'
+  - name: Runway
+    raw_url: 'rtmp://stream-5gw.1000eyes.de/rtplive/dus2777.stream'
+  - name: Front of terminal
+    raw_url: 'rtmp://stream-5gw.1000eyes.de/rtplive/dus275d.stream'
+
