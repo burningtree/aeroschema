@@ -1,5 +1,8 @@
 {
-  "description": "Airport",
+  "title": "Airport",
+  "description": "Airport schema",
+  "id": "http://airschema.org/schema/airport#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "definitions": {
     "surface": {

@@ -1,4 +1,7 @@
-description: Flight
+title: Flight
+description: Flight schema
+id: "http://airschema.org/schema/flight#"
+$schema: "http://json-schema.org/draft-04/schema#"
 type: object
 definitions:
   airport:
