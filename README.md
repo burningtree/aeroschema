@@ -29,13 +29,9 @@ All schemas are defined in [JSON Schema](http://json-schema.org) format and can 
 - **Reservation** - planned
 
 ## Resources
-### Datasets
+### Related datasets
 - [mledoze/countries](https://github.com/mledoze/countries) - World countries in JSON
 - [GeoNames](http://www.geonames.org/) - Geographical database
-
-### JSON Schema
-- [angular-schema-form](https://github.com/Textalk/angular-schema-form) - Automatic form generation for angular.js
-- [json-schema-benchmark](https://github.com/ebdrup/json-schema-benchmark) - Benchmark for Node.js validators
 
 ## TODO
 - geojson for airports/route?
@@ -44,6 +40,7 @@ All schemas are defined in [JSON Schema](http://json-schema.org) format and can 
 - airjson
 - aerojson
 - airschema
+- airpack
 
 ## Credits
 

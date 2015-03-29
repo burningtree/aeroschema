@@ -147,6 +147,7 @@ properties:
     description: Info about airport runways.
     type: array
     items:
+      title: Runway
       type: object
       properties:
         direction:
@@ -175,6 +176,7 @@ properties:
     description: Info about airport helipads.
     type: array
     items:
+      title: Helipad
       type: object
       properties:
         number:
@@ -194,6 +196,7 @@ properties:
     description: Airport terminals.
     type: array
     items:
+      title: Terminal
       type: object
       properties:
         name:
@@ -238,6 +241,7 @@ properties:
             description: Website languages.
             type: array
             items:
+              title: Language
               type: object
               properties:
                 lang:
@@ -254,6 +258,7 @@ properties:
             description: Website features.
             type: array
             items:
+              title: Feature
               type: string
               enum:
                 - sms-info
@@ -264,6 +269,7 @@ properties:
     title: References
     type: array
     items:
+      title: Reference
       type: object
       properties:
         type:
@@ -285,6 +291,7 @@ properties:
     description: Webcams at airport.
     type: array
     items:
+      title: Webcam
       type: object
       properties:
         name:
@@ -314,6 +321,7 @@ properties:
     title: Applications
     type: array
     items:
+      title: Application
       type: object
       properties:
         platform:
@@ -344,11 +352,13 @@ properties:
     description: Airport features.
     type: array
     items:
+      title: Feature
       $ref: "#/definitions/features"
   opening_hours:
     title: Opening hours
     type: array
     items:
+      title: Opening time
       type: object
       properties:
         days:

@@ -193,6 +193,7 @@
       "description": "Info about airport runways.",
       "type": "array",
       "items": {
+        "title": "Runway",
         "type": "object",
         "properties": {
           "direction": {
@@ -229,6 +230,7 @@
       "description": "Info about airport helipads.",
       "type": "array",
       "items": {
+        "title": "Helipad",
         "type": "object",
         "properties": {
           "number": {
@@ -253,6 +255,7 @@
       "description": "Airport terminals.",
       "type": "array",
       "items": {
+        "title": "Terminal",
         "type": "object",
         "properties": {
           "name": {
@@ -311,6 +314,7 @@
               "description": "Website languages.",
               "type": "array",
               "items": {
+                "title": "Language",
                 "type": "object",
                 "properties": {
                   "lang": {
@@ -334,6 +338,7 @@
               "description": "Website features.",
               "type": "array",
               "items": {
+                "title": "Feature",
                 "type": "string",
                 "enum": [
                   "sms-info",
@@ -351,6 +356,7 @@
       "title": "References",
       "type": "array",
       "items": {
+        "title": "Reference",
         "type": "object",
         "properties": {
           "type": {
@@ -380,6 +386,7 @@
       "description": "Webcams at airport.",
       "type": "array",
       "items": {
+        "title": "Webcam",
         "type": "object",
         "properties": {
           "name": {
@@ -418,6 +425,7 @@
       "title": "Applications",
       "type": "array",
       "items": {
+        "title": "Application",
         "type": "object",
         "properties": {
           "platform": {
@@ -460,6 +468,7 @@
       "description": "Airport features.",
       "type": "array",
       "items": {
+        "title": "Feature",
         "$ref": "#/definitions/features"
       }
     },
@@ -467,6 +476,7 @@
       "title": "Opening hours",
       "type": "array",
       "items": {
+        "title": "Opening time",
         "type": "object",
         "properties": {
           "days": {

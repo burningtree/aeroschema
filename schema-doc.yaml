@@ -1,0 +1,7 @@
+name: 'Aeroschema Reference'
+output: './doc'
+schemas:
+  - src: "schema/flight.json"
+    example: "examples/flight.json"
+  - src: "schema/airport.json"
+    example: "examples/airport.json"
