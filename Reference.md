@@ -36,6 +36,51 @@ Property | Type | Description | Example
 **rt_history** | *Array [Object [Flight.rt](#Flight.rt)]* | Real-time history - Flight real-time data history. | `null`
 **time** | *String* | Time of generation - Datetime in ISO 8601. | `"2015-03-27T01:38:05.419"`
 
+#### Example
+```javascript
+{
+  "ident": "DY1502",
+  "date": "2015-03-27",
+  "date_arrival": "2015-03-28",
+  "airline": {
+    "iata": "DY",
+    "icao": "NAX",
+    "name": "Norwegian"
+  },
+  "orig": {
+    "icao": "ENGM",
+    "name": "Oslo"
+  },
+  "dest": {
+    "iata": "PRG",
+    "name": "Prague"
+  },
+  "times": {
+    "std": "19:00",
+    "atd": "19:08"
+  },
+  "aircraft": {
+    "model": "73H"
+  },
+  "status": {
+    "code": "departed",
+    "delay": 8
+  },
+  "params": {
+    "flying": true,
+    "soldout": false
+  },
+  "rt": {
+    "coords": [
+      50.532,
+      19.231
+    ],
+    "speed": 560
+  },
+  "time": "2015-03-27T01:38:05.419"
+}
+```
+
 ### Flight.ident
 
 Flight identification.
@@ -271,6 +316,181 @@ Property | Type | Description | Example
 **apps** | *Array [Object [Airport.apps](#Airport.apps)]* | Applications | `[{"platform":"android","id":"cz.sw.upis.upisand","url":"https://play.google.com/store/apps/details?id=cz.sw.upis.upisand"},{"platform":"ios","id":581517376,"url":"https://itunes.apple.com/us/app/prague-airport-letiste-praha/id581517376"}]`
 **features** | *Array [string]* | Features - Airport features. | `["free-wifi","open-nonstop"]`
 **opening_hours** | *Array [Object [Airport.opening_hours](#Airport.opening_hours)]* | Opening hours | `[{"days":"all","times":"00:00-24:00"}]`
+
+#### Example
+```javascript
+{
+  "ident": {
+    "icao": "LKPR",
+    "iata": "PRG",
+    "geonames": 6299654
+  },
+  "name": "Václav Havel Airport Prague",
+  "domain": "prg.aero",
+  "elevation": 1247,
+  "continent": "EU",
+  "region": "CZ-PR",
+  "country": "CZE",
+  "timezone": "Europe/Prague",
+  "coords": [
+    50.100833,
+    14.26
+  ],
+  "served": [
+    {
+      "name": "Prague",
+      "geonames": 3067696
+    }
+  ],
+  "aliases": [
+    {
+      "lang": "en",
+      "value": "Václav Havel Airport Prague",
+      "preferred": true
+    },
+    {
+      "lang": "cs",
+      "value": "Letiště Václava Havla Praha"
+    },
+    {
+      "lang": "cs",
+      "value": "Mezinárodní letiště Praha-Ruzyně",
+      "historical": true
+    }
+  ],
+  "features": [
+    "free-wifi",
+    "open-nonstop"
+  ],
+  "terminals": [
+    {
+      "name": "Terminal 1",
+      "alias": "T1",
+      "public": true
+    },
+    {
+      "name": "Terminal 2",
+      "alias": "T2",
+      "public": true
+    },
+    {
+      "name": "Terminal 3",
+      "alias": "T3",
+      "public": false
+    },
+    {
+      "name": "Terminal 4",
+      "alias": "T4",
+      "public": false
+    }
+  ],
+  "runways": [
+    {
+      "direction": "06/24",
+      "size": "12191x197",
+      "surface": "concrete",
+      "active": true
+    },
+    {
+      "direction": "12/30",
+      "length": 10665,
+      "surface": "concrete",
+      "active": true
+    },
+    {
+      "direction": "04/22",
+      "length": 6955,
+      "surface": "asphaltic-concrete",
+      "active": false
+    }
+  ],
+  "helipads": [
+    {
+      "number": "H2",
+      "length": 11.2,
+      "surface": "asphalt"
+    }
+  ],
+  "website": {
+    "url": "http://www.prg.aero/en/",
+    "url_mobile": "http://m.prg.aero/en/",
+    "languages": [
+      {
+        "lang": "cs",
+        "url": "http://www.prg.aero/cs/",
+        "url_mobile": "http://m.prg.aero/cs/",
+        "primary": true
+      },
+      {
+        "lang": "en",
+        "url": "http://www.prg.aero/en/",
+        "url_mobile": "http://m.prg.aero/en/"
+      },
+      {
+        "lang": "ru",
+        "url": "http://www.prg.aero/ru/",
+        "url_mobile": "http://m.prg.aero/ru/"
+      }
+    ],
+    "features": [
+      "sms-info",
+      "webcam",
+      "map"
+    ]
+  },
+  "refs": [
+    {
+      "type": "wikipedia",
+      "value": "http://en.wikipedia.org/wiki/V%C3%A1clav_Havel_Airport_Prague"
+    }
+  ],
+  "waiting_times": {
+    "security": [
+      {
+        "terminal": "T1",
+        "time": "<10"
+      },
+      {
+        "terminal": "T2",
+        "area": "left",
+        "time": 2
+      },
+      {
+        "terminal": "T2",
+        "area": "right",
+        "time": "<15"
+      }
+    ]
+  },
+  "webcams": [
+    {
+      "terminal": "T1",
+      "fps": 0.33,
+      "resolution": "704x480",
+      "raw_url": "http://apollo.prg.aero/kamera/image.jpg",
+      "url": "http://www.prg.aero/en/prague-airport/webcam/"
+    }
+  ],
+  "apps": [
+    {
+      "platform": "android",
+      "id": "cz.sw.upis.upisand",
+      "url": "https://play.google.com/store/apps/details?id=cz.sw.upis.upisand"
+    },
+    {
+      "platform": "ios",
+      "id": 581517376,
+      "url": "https://itunes.apple.com/us/app/prague-airport-letiste-praha/id581517376"
+    }
+  ],
+  "opening_hours": [
+    {
+      "days": "all",
+      "times": "00:00-24:00"
+    }
+  ]
+}
+```
 
 ### Airport.ident
 
