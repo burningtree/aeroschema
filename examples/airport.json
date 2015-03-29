@@ -162,7 +162,10 @@
       "url": "https://itunes.apple.com/us/app/prague-airport-letiste-praha/id581517376"
     }
   ],
-  "opening_hours": {
-    "all": "00:00-24:00"
-  }
+  "opening_hours": [
+    {
+      "days": "all",
+      "times": "00:00-24:00"
+    }
+  ]
 }

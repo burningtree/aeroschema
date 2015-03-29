@@ -6,6 +6,7 @@
   "type": "object",
   "definitions": {
     "surface": {
+      "title": "Type of surface.",
       "type": "string",
       "enum": [
         "concrete",
@@ -14,6 +15,8 @@
       ]
     },
     "wait_time": {
+      "title": "Waiting time",
+      "description": "in minutes",
       "oneOf": [
         {
           "type": "string",
@@ -22,8 +25,26 @@
         {
           "type": "number"
         }
-      ],
-      "description": "in minutes"
+      ]
+    },
+    "times": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "terminal": {
+            "title": "Terminal",
+            "type": "string"
+          },
+          "area": {
+            "title": "Area",
+            "type": "string"
+          },
+          "time": {
+            "$ref": "#/definitions/wait_time"
+          }
+        }
+      }
     },
     "coords": {
       "type": "array",
@@ -45,52 +66,71 @@
   },
   "properties": {
     "ident": {
+      "title": "Airport ID",
       "type": "object",
+      "description": "Airport identificators",
       "properties": {
-        "icao": {
+        "iata": {
+          "title": "IATA code",
+          "description": "3-letter IATA code of airport.",
           "type": "string"
         },
-        "iata": {
+        "icao": {
+          "title": "ICAO code",
+          "description": "3-letter ICAO code of airport.",
           "type": "string"
         },
         "geonames": {
-          "type": "number",
-          "description": "GeoNames ID"
+          "title": "Geonames ID",
+          "type": "number"
         }
       }
     },
     "name": {
+      "title": "Name",
+      "description": "Name of airport.",
       "type": "string"
     },
     "domain": {
-      "type": "string",
-      "description": "Internet domain"
+      "title": "Internet domain",
+      "description": "Internet domain of airport.",
+      "type": "string"
     },
     "aliases": {
+      "title": "Aliases",
+      "description": "Name aliases of airport.",
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
           "lang": {
-            "type": "string",
-            "description": "three-letter ISO 639-3 language code"
+            "title": "Language",
+            "description": "Three-letter ISO 639-3 language code.",
+            "type": "string"
           },
           "value": {
+            "title": "Value",
             "type": "string"
           },
           "preferred": {
+            "title": "Preferred",
             "type": "boolean"
           },
           "historical": {
+            "title": "Historical",
+            "description": "Historical names.",
             "type": "boolean"
           },
           "colloquial": {
+            "title": "Colloquial",
             "type": "boolean"
           }
         }
       }
     },
     "continent": {
+      "title": "Continent",
+      "description": "Continent where is airport located.",
       "type": "string",
       "enum": [
         "AF",
@@ -103,110 +143,149 @@
       ]
     },
     "region": {
+      "title": "Region",
+      "description": "ISO 3166-2 region code",
       "type": "string",
-      "pattern": "^[A-Z]{2}-[A-Z]{2}$",
-      "description": "ISO 3166-2 region code"
+      "pattern": "^[A-Z]{2}-[A-Z]{2}$"
     },
     "country": {
+      "title": "Country",
+      "description": "ISO 3166-1 alpha-3 code",
       "type": "string",
-      "pattern": "^[A-Z]{3}$",
-      "description": "ISO 3166-1 alpha-3 code"
+      "pattern": "^[A-Z]{3}$"
     },
     "served": {
+      "title": "Served",
+      "description": "Cities/locations served by this airport.",
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
           "name": {
+            "title": "Name",
+            "description": "Name of city/location.",
             "type": "string"
           },
           "geonames": {
-            "type": "number",
-            "description": "GeoNames city ID"
+            "title": "Geonames ID",
+            "type": "number"
           }
         }
       }
     },
     "timezone": {
-      "type": "string",
-      "description": "tz database code"
+      "title": "Timezone",
+      "description": "tz database code.",
+      "type": "string"
     },
     "coords": {
+      "title": "Coordinates",
+      "description": "Airport location coordinates.",
       "$ref": "#/definitions/coords"
     },
     "elevation": {
+      "title": "Elevation",
       "type": "number",
-      "description": "ft"
+      "description": "Elevation of airport in feets."
     },
     "runways": {
+      "title": "Runways",
+      "description": "Info about airport runways.",
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
           "direction": {
+            "title": "Direction",
+            "description": "Runway direction.",
             "type": "string",
             "pattern": "^\\d{2}\\/\\d{2}$"
           },
           "length": {
-            "type": "number",
-            "description": "ft"
+            "title": "Length",
+            "description": "Runway length in feets.",
+            "type": "number"
           },
           "size": {
+            "title": "Size",
+            "description": "Runway dimensions in feets (length x width).",
             "type": "string",
-            "description": "dimension (l x h)",
             "pattern": "^\\d+x\\d+$"
           },
           "surface": {
+            "title": "Surface",
+            "description": "Type of surface.",
             "$ref": "#/definitions/surface"
           },
           "active": {
+            "title": "Active?",
             "type": "boolean"
           }
         }
       }
     },
     "helipads": {
+      "title": "Helipads",
+      "description": "Info about airport helipads.",
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
           "number": {
+            "title": "Number",
             "type": "string"
           },
           "length": {
-            "type": "number",
-            "description": "ft"
+            "title": "Length",
+            "description": "ft",
+            "type": "number"
           },
           "surface": {
+            "title": "Surface",
+            "description": "Type of surface.",
             "$ref": "#/definitions/surface"
           }
         }
       }
     },
     "terminals": {
+      "title": "Terminals",
+      "description": "Airport terminals.",
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
           "name": {
+            "title": "Name",
+            "description": "Terminal name.",
             "type": "string"
           },
           "alias": {
+            "title": "Alias",
+            "description": "Terminal alias or shortname.",
             "type": "string"
           },
           "public": {
+            "title": "Public",
+            "description": "Its public terminal?",
             "type": "boolean"
           },
           "coords": {
+            "title": "Coordinates",
+            "description": "Location coordinates of terminal.",
             "$ref": "#/definitions/coords"
           },
           "features": {
+            "title": "Features",
+            "description": "Terminal features.",
             "$ref": "#/definitions/features"
           }
         }
       }
     },
     "website": {
+      "title": "Website",
+      "description": "Airport website.",
       "oneOf": [
         {
           "type": "string"
@@ -215,15 +294,21 @@
           "type": "object",
           "properties": {
             "url": {
+              "title": "URL",
               "type": "string"
             },
             "url_mobile": {
+              "title": "Mobile URL",
+              "description": "URL to mobile version of web.",
               "type": "string"
             },
             "mobile_ready": {
+              "title": "Mobile ready?",
               "type": "boolean"
             },
             "languages": {
+              "title": "Languages",
+              "description": "Website languages.",
               "type": "array",
               "items": {
                 "type": "object",
@@ -245,6 +330,8 @@
               }
             },
             "features": {
+              "title": "Features",
+              "description": "Website features.",
               "type": "array",
               "items": {
                 "type": "string",
@@ -261,78 +348,81 @@
       ]
     },
     "refs": {
+      "title": "References",
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
           "type": {
+            "title": "Type",
+            "description": "Type of reference.",
             "type": "string"
           },
           "value": {
+            "title": "Value",
             "type": "string"
           }
         }
       }
     },
     "waiting_times": {
+      "title": "Waiting times",
       "type": "object",
       "properties": {
         "security": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "terminal": {
-                "type": "string"
-              },
-              "area": {
-                "type": "string"
-              },
-              "time": {
-                "$ref": "#/definitions/wait_time"
-              }
-            }
-          }
+          "title": "Security",
+          "$ref": "#/definitions/times"
         }
       }
     },
     "webcams": {
+      "title": "Webcams",
+      "description": "Webcams at airport.",
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
           "name": {
+            "title": "Name",
             "type": "string",
             "description": "Name of webcam"
           },
           "terminal": {
+            "title": "Terminal",
             "type": "string",
-            "description": "Terminal name or alias"
+            "description": "Terminal name or alias."
           },
           "fps": {
-            "type": "number",
-            "description": "Frames per second"
+            "title": "FPS",
+            "description": "Frames per second.",
+            "type": "number"
           },
           "resolution": {
+            "title": "Resolution",
+            "description": "Resolution in pixels.",
             "type": "string",
-            "pattern": "^(\\d+)x(\\d+)$",
-            "description": "Resolution in pixels"
+            "pattern": "^(\\d+)x(\\d+)$"
           },
           "url": {
+            "title": "URL",
             "type": "string"
           },
           "raw_url": {
+            "title": "Raw URL",
             "type": "string"
           }
         }
       }
     },
     "apps": {
+      "title": "Applications",
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
           "platform": {
+            "title": "Platform",
+            "description": "Platform of application.",
             "type": "string",
             "enum": [
               "ios",
@@ -346,6 +436,8 @@
             ]
           },
           "id": {
+            "title": "ID",
+            "description": "Application ID.",
             "oneOf": [
               {
                 "type": "string"
@@ -356,26 +448,41 @@
             ]
           },
           "url": {
+            "title": "URL",
+            "description": "Link to application.",
             "type": "string"
           }
         }
       }
     },
     "features": {
+      "title": "Features",
+      "description": "Airport features.",
       "type": "array",
       "items": {
         "$ref": "#/definitions/features"
       }
     },
     "opening_hours": {
-      "type": "object",
-      "patternProperties": {
-        "^(mo|tu|we|th|fr|sa|su|all)(-(mo|tu|we|th|fr|sa|su))?$": {
-          "type": "string",
-          "pattern": "^\\d{2}:\\d{2}\\-\\d{2}:\\d{2}$"
+      "title": "Opening hours",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "days": {
+            "title": "Days",
+            "description": "Days in week.",
+            "type": "string",
+            "pattern": "^(mo|tu|we|th|fr|sa|su|all)(-(mo|tu|we|th|fr|sa|su))?$"
+          },
+          "times": {
+            "title": "Times",
+            "description": "Opening time.",
+            "type": "string",
+            "pattern": "^\\d{2}:\\d{2}\\-\\d{2}:\\d{2}$"
+          }
         }
-      },
-      "additionalProperties": false
+      }
     }
   }
 }

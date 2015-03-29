@@ -100,5 +100,6 @@ apps:
     id: 581517376
     url: "https://itunes.apple.com/us/app/prague-airport-letiste-praha/id581517376"
 opening_hours:
-  all: 00:00-24:00
+  - days: all
+    times: 00:00-24:00
 

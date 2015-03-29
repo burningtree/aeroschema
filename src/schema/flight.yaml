@@ -5,25 +5,40 @@ $schema: "http://json-schema.org/draft-04/schema#"
 type: object
 definitions:
   airport:
+    title: Airport
     type: object
     properties:
       iata:
+        title: IATA code
+        description: 3-letter IATA code of airport.
         type: string
         format: '^[A-Z]{3}$'
       icao:
+        title: ICAO code
+        description: 4-letter ICAO code of airport.
         type: string
         format: '^[A-Z]{4}$'
       name:
+        title: Airport name
+        description: Name of airport.
         type: string
       terminal:
+        title: Terminal
+        description: Airport terminal.
         type: string
       gate: 
+        title: Gate
+        description: Airport gate.
         type: string
       belt:
+        title: Baggage belt
+        description: Baggage belt.
         type: string
       exit:
+        title: Exit section
         type: string
   date:
+    description: "ISO 8601 format: `YY-MM-DDDD`."
     type: string
     pattern: '^\d{4}-\d{2}-\d{2}$'
   time:
@@ -31,144 +46,259 @@ definitions:
     pattern: '^\d{2}:\d{2}(:\d{2})?$'
   status:
     type: object
+    title: Flight status
     properties:
       code:
+        title: Status code
+        description: Code of status, see below.
         type: string
         enum:
+          - checkin
+          - gateopen
+          - gatechange
+          - boarding
+          - lastcall
+          - finalcall
+          - gateclose
+          - taxiing
           - departed
+          - approaching
+          - landing
+          - landed
+          - cancelled
+          - diverted
+          - delayed
       msg:
+        title: Message
+        description: Status message.
         type: string
       delay:
+        title: Delay
+        description: Delay in minutes.
         type: number
       time:
+        title: Time
+        description: Datetime of current status in ISO 8601.
         type: string
   rt:
     type: object
+    title: Real-time data
     properties:
       coords:
+        title: Coordinates
+        description: Coordinates in latitude and longitude.
         type: array
         items:
           type: number
         minItems: 2
         maxItems: 2
       alt:
+        title: Altitude
+        description: Altitude in feets.
         type: number
       speed:
+        title: Speed
+        description: Speed in knots.
         type: number
       track:
+        title: Track
+        description: Current track.
         type: number
       squawk:
+        title: Squawk code
+        description: Current [Squawk code](http://en.wikipedia.org/wiki/Squawk_code).
         type: number
         minimum: 1000
         maximum: 9999
 properties:
   ident:
+    title: Flight ID
+    description: Flight identification.
     oneOf:
       - type: string
         pattern: '^\w{2,3}\d{1,4}$'
       - type: object
+        description: Flight identification.
         properties:
           no:
+            title: Flight number
+            description: Flight number without airline code. 
             type: number
-          no_full:
+          no_full: 
+            title: Full flight number
+            description: Full flight number with airline code. 
             type: string
   date:
+    title: Departure date
     $ref: "#/definitions/date"
   date_arrival:
+    title: Arrival date
+    description: "Only if its overnight night."
     $ref: "#/definitions/date"
   airline:
     type: object
+    title: Airline
     properties:
       iata:
+        title: IATA code
+        description: 2-letter airline IATA code.
         type: string
         pattern: '^[A-Z]{2}$'
       icao:
+        title: ICAO code
+        description: 3-letter airline ICAO code.
         type: string
         pattern: '^[A-Z]{3}$'
       name:
+        title: Airline name
         type: string
   orig:
+    title: Origin
+    description: Information about origin airport.
     $ref: "#/definitions/airport"
   dest:
+    title: Destination
+    description: Information about destination airport.
     $ref: "#/definitions/airport"
   times:
+    title: Flight times
+    description: 'All times are in local time in ISO 8601 format, for example: "03:33:01" or less specific "03:33".'
     type: object
     properties:
       std:
+        title: Scheduled time of departure
         $ref: "#/definitions/time"  
       sta:
+        title: Scheduled time of arrival
         $ref: "#/definitions/time"  
       etd:
+        title: Estimated time of departure
         $ref: "#/definitions/time"  
       eta:
+        title: Estimated time of arrival
         $ref: "#/definitions/time"  
       atd:
+        title: Actual time of departure
         $ref: "#/definitions/time"  
       ata:
+        title: Actual time of arrival
         $ref: "#/definitions/time"  
       rtd:
+        title: Runway time of departure
+        description: Take-off
         $ref: "#/definitions/time"  
       rta:
+        title: Runway time of arrival
+        description: Touch down.
         $ref: "#/definitions/time"  
       gtd:
+        title: Gate time of departure
+        description: Aircraft doors closed.
         $ref: "#/definitions/time"  
       gta:
+        title: Gate time of arrival
+        description: Aircraft doors open.
         $ref: "#/definitions/time"  
       xtd:
+        title: Radar time of departure
         $ref: "#/definitions/time"  
       xta:
+        title: Radar time of arrival
         $ref: "#/definitions/time"  
   aircraft:
+    title: Aircraft
+    description: Info about aircraft.
     type: object
     properties:
       model:
+        title: Model
+        description: Model of aircraft.
         type: string
       reg:
+        title: Registration
+        description: Aircraft registration number.
         type: string
   status:
+    title: Flight status
     oneOf:
-      - $ref: "#/definitions/status"
       - $ref: "#/definitions/status/properties/code"
+      - $ref: "#/definitions/status"
   status_history:
+    title: Status history
+    description: Flight status history.
     type: array
     items:
       $ref: "#/definitions/status"
   params:
+    title: Flight parameters
+    description: Basic flight parameters.
     type: object
     properties:
       soldout:
+        title: Sold out
+        description: If the flight is sold out.
         type: boolean
       cancelled:
+        title: Cancelled
+        description: Cancelled flight.
         type: boolean
       diverted:
+        title: Diverted
+        description: Diverted flight.
         type: boolean
       delayed:
+        title: Delayed
+        description: If the flight is delayed more than 15 minutes.
         type: boolean
       flying:
+        title: Flying
+        description: If the flight is in air.
         type: boolean
   stats:
+    title: Statistics
+    description: Common statistics.
     type: object
     properties:
       seats_sold:
+        title: Sold seats
+        description: Number of sold seats.
         type: number
       seats_available:
+        title: Available seats
+        description: Number of available seats.
         type: number
       load_factor:
+        title: Load factor
+        description: Load factor in percents.
         type: number
       pax:
+        title: Passengers
+        description: Number of passengers boarded on aircraft.
         type: number
       pilots:
+        title: Pilots
+        description: Number of pilots.
         type: number
       crew:
+        title: Crew
+        description: Number of crew without pilots.
         type: number
       crew_all:
+        title: All crew
+        description: Number of all crew including pilots.
         type: number
   rt:
+    title: Real-time data
+    description: Current real-time information - flight position, track and other.
     $ref: "#/definitions/rt"
   rt_history:
+    title: Real-time history
+    description: Flight real-time data history.
     type: array
     items:
       $ref: "#/definitions/rt"
   time:
+    title: Time of generation
+    description: Datetime in ISO 8601. 
     type: string
 

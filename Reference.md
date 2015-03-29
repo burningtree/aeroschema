@@ -1,174 +1,572 @@
-# Aeroschema Reference (draft-0)
+# Aeroschema Reference
+
+ * [Flight](#Flight)
+ * [Airport](#Airport)
+
+## Flight
+
+Flight schema
+
+* [Flight](#Flight)
+  * [Flight.ident](#Flight.ident)
+  * [Flight.airline](#Flight.airline)
+  * [Flight.airport](#Flight.airport)
+  * [Flight.times](#Flight.times)
+  * [Flight.aircraft](#Flight.aircraft)
+  * [Flight.status](#Flight.status)
+  * [Flight.params](#Flight.params)
+  * [Flight.stats](#Flight.stats)
+  * [Flight.rt](#Flight.rt)
+
+Property | Type | Description | Example
+---- | ---- | ---- | ---- | ----
+**ident** | *String or Object [Flight.ident](#Flight.ident)* | Flight ID - Flight identification. | `"DY1502"`
+**date** | *String* | Departure date - ISO 8601 format: `YY-MM-DDDD`. | `"2015-03-27"`
+**date_arrival** | *String* | Arrival date - Only if its overnight night. ISO 8601 format: `YY-MM-DDDD`. | `"2015-03-28"`
+**airline** | *Object [Flight.airline](#Flight.airline)* | Airline | `{"iata":"DY","icao":"NAX","name":"Norwegian"}`
+**orig** | *Object [Flight.airport](#Flight.airport)* | Origin - Information about origin airport. | `{"icao":"ENGM","name":"Oslo"}`
+**dest** | *Object [Flight.airport](#Flight.airport)* | Destination - Information about destination airport. | `{"iata":"PRG","name":"Prague"}`
+**times** | *Object [Flight.times](#Flight.times)* | Flight times - All times are in local time in ISO 8601 format, for example: &quot;03:33:01&quot; or less specific &quot;03:33&quot;. | `{"std":"19:00","atd":"19:08"}`
+**aircraft** | *Object [Flight.aircraft](#Flight.aircraft)* | Aircraft - Info about aircraft. | `{"model":"73H"}`
+**status** | *String or Object [Flight.status](#Flight.status)* | Flight status | `{"code":"departed","delay":8}`
+**status_history** | *Array [Object [Flight.status](#Flight.status)]* | Status history - Flight status history. | `null`
+**params** | *Object [Flight.params](#Flight.params)* | Flight parameters - Basic flight parameters. | `{"flying":true,"soldout":false}`
+**stats** | *Object [Flight.stats](#Flight.stats)* | Statistics - Common statistics. | `null`
+**rt** | *Object [Flight.rt](#Flight.rt)* | Real-time data - Current real-time information - flight position, track and other. | `{"coords":[50.532,19.231],"speed":560}`
+**rt_history** | *Array [Object [Flight.rt](#Flight.rt)]* | Real-time history - Flight real-time data history. | `null`
+**time** | *String* | Time of generation - Datetime in ISO 8601. | `"2015-03-27T01:38:05.419"`
+
+### Flight.ident
+
+Flight identification.
+
+Property | Type | Description | Example
+---- | ---- | ---- | ---- | ----
+**no** | *Number* | Flight number - Flight number without airline code. | `null`
+**no_full** | *String* | Full flight number - Full flight number with airline code. | `null`
 
 
-### Table of contents
-- [Feeds](#feeds)
-   - [Collection](#collection)
-- [Schemas](#schemas)
-  - [Flight](#flight)
-    - [Flight.ident](#flightident)
-    - [Flight.airline](#flightairline)
-    - [Flight.airport](#flightairport)
-    - [Flight.times](#flighttimes)
-    - [Flight.status](#flightstatus)
-    - [Flight.params](#flightparams)
-    - [Flight.stats](#flightstats)
-    - [Flight.rt](#flightrt)
+#### Example
+```javascript
+"DY1502"
+```
+### Flight.airline
 
-## Feeds
-### Collection
+Property | Type | Description | Example
+---- | ---- | ---- | ---- | ----
+**iata** | *String* | IATA code - 2-letter airline IATA code. | `"DY"`
+**icao** | *String* | ICAO code - 3-letter airline ICAO code. | `"NAX"`
+**name** | *String* | Airline name | `"Norwegian"`
 
-##### Collection example
+
+#### Example
 ```javascript
 {
-  items: [
-    {
-      flight: {
-        date: "2014-03-26",
-        ident: "FR1234",
-        status: {
-          code: "cancelled"
-          msg: "Flight cancelled due to bad weather at destination."
-        }
-      }
-    },
-    {
-      flight: {
-        ident: "OK9922",
-        rt: {
-          coords: [ 50.0833, 14.4167 ],
-          speed: 470
-        }
-      }
-    },
+  "iata": "DY",
+  "icao": "NAX",
+  "name": "Norwegian"
+}
+```
+### Flight.airport
+
+Information about origin airport.
+
+Property | Type | Description | Example
+---- | ---- | ---- | ---- | ----
+**iata** | *String* | IATA code - 3-letter IATA code of airport. | `null`
+**icao** | *String* | ICAO code - 4-letter ICAO code of airport. | `"ENGM"`
+**name** | *String* | Airport name - Name of airport. | `"Oslo"`
+**terminal** | *String* | Terminal - Airport terminal. | `null`
+**gate** | *String* | Gate - Airport gate. | `null`
+**belt** | *String* | Baggage belt - Baggage belt. | `null`
+**exit** | *String* | Exit section | `null`
+
+
+#### Example
+```javascript
+{
+  "icao": "ENGM",
+  "name": "Oslo"
+}
+```
+### Flight.times
+
+All times are in local time in ISO 8601 format, for example: &quot;03:33:01&quot; or less specific &quot;03:33&quot;.
+
+Property | Type | Description | Example
+---- | ---- | ---- | ---- | ----
+**std** | *String* | Scheduled time of departure | `"19:00"`
+**sta** | *String* | Scheduled time of arrival | `null`
+**etd** | *String* | Estimated time of departure | `null`
+**eta** | *String* | Estimated time of arrival | `null`
+**atd** | *String* | Actual time of departure | `"19:08"`
+**ata** | *String* | Actual time of arrival | `null`
+**rtd** | *String* | Runway time of departure - Take-off | `null`
+**rta** | *String* | Runway time of arrival - Touch down. | `null`
+**gtd** | *String* | Gate time of departure - Aircraft doors closed. | `null`
+**gta** | *String* | Gate time of arrival - Aircraft doors open. | `null`
+**xtd** | *String* | Radar time of departure | `null`
+**xta** | *String* | Radar time of arrival | `null`
+
+
+#### Example
+```javascript
+{
+  "std": "19:00",
+  "atd": "19:08"
+}
+```
+### Flight.aircraft
+
+Info about aircraft.
+
+Property | Type | Description | Example
+---- | ---- | ---- | ---- | ----
+**model** | *String* | Model - Model of aircraft. | `"73H"`
+**reg** | *String* | Registration - Aircraft registration number. | `null`
+
+
+#### Example
+```javascript
+{
+  "model": "73H"
+}
+```
+### Flight.status
+
+Property | Type | Description | Example
+---- | ---- | ---- | ---- | ----
+**code** | *String* | Status code - Code of status, see below. | `"departed"`
+**msg** | *String* | Message - Status message. | `null`
+**delay** | *Number* | Delay - Delay in minutes. | `8`
+**time** | *String* | Time - Datetime of current status in ISO 8601. | `null`
+
+#### Enum `code`
+* checkin
+* gateopen
+* gatechange
+* boarding
+* lastcall
+* finalcall
+* gateclose
+* taxiing
+* departed
+* approaching
+* landing
+* landed
+* cancelled
+* diverted
+* delayed
+
+#### Example
+```javascript
+{
+  "code": "departed",
+  "delay": 8
+}
+```
+### Flight.params
+
+Basic flight parameters.
+
+Property | Type | Description | Example
+---- | ---- | ---- | ---- | ----
+**soldout** | *Boolean* | Sold out - If the flight is sold out. | `false`
+**cancelled** | *Boolean* | Cancelled - Cancelled flight. | `null`
+**diverted** | *Boolean* | Diverted - Diverted flight. | `null`
+**delayed** | *Boolean* | Delayed - If the flight is delayed more than 15 minutes. | `null`
+**flying** | *Boolean* | Flying - If the flight is in air. | `true`
+
+
+#### Example
+```javascript
+{
+  "flying": true,
+  "soldout": false
+}
+```
+### Flight.stats
+
+Common statistics.
+
+Property | Type | Description | Example
+---- | ---- | ---- | ---- | ----
+**seats_sold** | *Number* | Sold seats - Number of sold seats. | `null`
+**seats_available** | *Number* | Available seats - Number of available seats. | `null`
+**load_factor** | *Number* | Load factor - Load factor in percents. | `null`
+**pax** | *Number* | Passengers - Number of passengers boarded on aircraft. | `null`
+**pilots** | *Number* | Pilots - Number of pilots. | `null`
+**crew** | *Number* | Crew - Number of crew without pilots. | `null`
+**crew_all** | *Number* | All crew - Number of all crew including pilots. | `null`
+
+
+#### Example
+```javascript
+null
+```
+### Flight.rt
+
+Current real-time information - flight position, track and other.
+
+Property | Type | Description | Example
+---- | ---- | ---- | ---- | ----
+**coords** | *Array [number]* | Coordinates - Coordinates in latitude and longitude. | `[50.532,19.231]`
+**alt** | *Number* | Altitude - Altitude in feets. | `null`
+**speed** | *Number* | Speed - Speed in knots. | `560`
+**track** | *Number* | Track - Current track. | `null`
+**squawk** | *Number* | Squawk code - Current [Squawk code](http:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Squawk_code). | `null`
+
+
+#### Example
+```javascript
+{
+  "coords": [
+    50.532,
+    19.231
   ],
-  count: 2,
-  time: "2015-03-26T04:57:02.643"
+  "speed": 560
 }
 ```
 
-## Schemas
-All schemas are defined in [JSON Schema](http://json-schema.org) format and can also be used separately (stored in [`schema/`](/schema) directory).
+## Airport
 
-### Flight
-&nbsp; | Type | Description | Example
+Airport schema
+
+* [Airport](#Airport)
+  * [Airport.ident](#Airport.ident)
+  * [Airport.aliases](#Airport.aliases)
+  * [Airport.served](#Airport.served)
+  * [Airport.runways](#Airport.runways)
+  * [Airport.helipads](#Airport.helipads)
+  * [Airport.terminals](#Airport.terminals)
+  * [Airport.website](#Airport.website)
+  * [Airport.website.languages](#Airport.website.languages)
+  * [Airport.refs](#Airport.refs)
+  * [Airport.waiting_times](#Airport.waiting_times)
+  * [Airport.waiting_times.times](#Airport.waiting_times.times)
+  * [Airport.webcams](#Airport.webcams)
+  * [Airport.apps](#Airport.apps)
+  * [Airport.opening_hours](#Airport.opening_hours)
+
+Property | Type | Description | Example
 ---- | ---- | ---- | ---- | ----
-**ident** | *String* or *Object [Flight.ident](#flightident)* | Flight identification. | `"FR8403"` or `{ no: 8403 }`
-**date** | *String* | Departure date according to ISO 8601: `YY-MM-DDDD`. | `"2015-03-29"`
-**date_arrival** | *String* | Arrival date (if its overnight flight). | `"2015-03-30"`
-**airline** | *Object [Flight.airline](#flightairline)* | Information about operating airline. | `{ iata: "OK", icao: "CSA", name: "Czech Airlines" }`
-**orig** | *Object [Flight.airport](#flightairport)*| Information about departure airport. | `{ iata: "PRG", name: "Prague" }`
-**dest** | *Object [Flight.airport](#flightairport)* | Information about arrival airport. | `{ iata: "PRG", name: "Prague" }`
-**times** | *Object [Flight.times](#flighttimes)* | Flight departure and arrival times. | `{ std: "17:00", sta: "18:15" }`
-**aircraft** | *Object [Flight.aircraft](#flightaircraft)* | Info about aircraft. | `{ model: "319" }`
-**status** | *String [Flight.status](#flightstatus)* | Flight status. See [Flight.status](#flightstatus). | `{ code: "departed" }`
-**status_history** | *Array of [Flight.status](#flightstatus)* | Flight status history. | `[ { code: "cancelled", time: "2015-03-26T03:37:38.654Z" } ]`
-**params** | *Object [Flight.params](#flightparams)* | Basic flight parameters. | `{ soldout: true }`
-**stats** | *Object [Flight.stats](#flightstats)* | Common statistics. | `{ load_factor: 99 }`
-**rt** | *Object [Flight.rt](#flightrt)* | Current real-time information - flight position, track and other. | `{ coords: [ 50.0833, 14.4167 ], alt: 1000, speed: 812, track: 108 }`
-**rt_history** | *Array of [Flight.rt](#flightrt)* | Flight position history. | `[..]`
-**time** | *String* | Datetime of generation in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601). | `"2015-03-26T03:33:24.680"` 
+**ident** | *Object [Airport.ident](#Airport.ident)* | Airport ID - Airport identificators | `{"icao":"LKPR","iata":"PRG","geonames":6299654}`
+**name** | *String* | Name - Name of airport. | `"Václav Havel Airport Prague"`
+**domain** | *String* | Internet domain - Internet domain of airport. | `"prg.aero"`
+**aliases** | *Array [Object [Airport.aliases](#Airport.aliases)]* | Aliases - Name aliases of airport. | `[{"lang":"en","value":"Václav Havel Airport Prague","preferred":true},{"lang":"cs","value":"Letiště Václava Havla Praha"},{"lang":"cs","value":"Mezinárodní letiště Praha-Ruzyně","historical":true}]`
+**continent** | *String* | Continent - Continent where is airport located. | `"EU"`
+**region** | *String* | Region - ISO 3166-2 region code | `"CZ-PR"`
+**country** | *String* | Country - ISO 3166-1 alpha-3 code | `"CZE"`
+**served** | *Array [Object [Airport.served](#Airport.served)]* | Served - Cities&#x2F;locations served by this airport. | `[{"name":"Prague","geonames":3067696}]`
+**timezone** | *String* | Timezone - tz database code. | `"Europe/Prague"`
+**coords** | *Array [number]* | Coordinates - Airport location coordinates. | `[50.100833,14.26]`
+**elevation** | *Number* | Elevation - Elevation of airport in feets. | `1247`
+**runways** | *Array [Object [Airport.runways](#Airport.runways)]* | Runways - Info about airport runways. | `[{"direction":"06/24","size":"12191x197","surface":"concrete","active":true},{"direction":"12/30","length":10665,"surface":"concrete","active":true},{"direction":"04/22","length":6955,"surface":"asphaltic-concrete","active":false}]`
+**helipads** | *Array [Object [Airport.helipads](#Airport.helipads)]* | Helipads - Info about airport helipads. | `[{"number":"H2","length":11.2,"surface":"asphalt"}]`
+**terminals** | *Array [Object [Airport.terminals](#Airport.terminals)]* | Terminals - Airport terminals. | `[{"name":"Terminal 1","alias":"T1","public":true},{"name":"Terminal 2","alias":"T2","public":true},{"name":"Terminal 3","alias":"T3","public":false},{"name":"Terminal 4","alias":"T4","public":false}]`
+**website** | *String or Object [Airport.website](#Airport.website)* | Website - Airport website. | `{"url":"http://www.prg.aero/en/","url_mobile":"http://m.prg.aero/en/","languages":[{"lang":"cs","url":"http://www.prg.aero/cs/","url_mobile":"http://m.prg.aero/cs/","primary":true},{"lang":"en","url":"http://www.prg.aero/en/","url_mobile":"http://m.prg.aero/en/"},{"lang":"ru","url":"http://www.prg.aero/ru/","url_mobile":"http://m.prg.aero/ru/"}],"features":["sms-info","webcam","map"]}`
+**refs** | *Array [Object [Airport.refs](#Airport.refs)]* | References | `[{"type":"wikipedia","value":"http://en.wikipedia.org/wiki/V%C3%A1clav_Havel_Airport_Prague"}]`
+**waiting_times** | *Object [Airport.waiting_times](#Airport.waiting_times)* | Waiting times | `{"security":[{"terminal":"T1","time":"<10"},{"terminal":"T2","area":"left","time":2},{"terminal":"T2","area":"right","time":"<15"}]}`
+**webcams** | *Array [Object [Airport.webcams](#Airport.webcams)]* | Webcams - Webcams at airport. | `[{"terminal":"T1","fps":0.33,"resolution":"704x480","raw_url":"http://apollo.prg.aero/kamera/image.jpg","url":"http://www.prg.aero/en/prague-airport/webcam/"}]`
+**apps** | *Array [Object [Airport.apps](#Airport.apps)]* | Applications | `[{"platform":"android","id":"cz.sw.upis.upisand","url":"https://play.google.com/store/apps/details?id=cz.sw.upis.upisand"},{"platform":"ios","id":581517376,"url":"https://itunes.apple.com/us/app/prague-airport-letiste-praha/id581517376"}]`
+**features** | *Array [string]* | Features - Airport features. | `["free-wifi","open-nonstop"]`
+**opening_hours** | *Array [Object [Airport.opening_hours](#Airport.opening_hours)]* | Opening hours | `[{"days":"all","times":"00:00-24:00"}]`
 
-#### Flight.ident
-&nbsp; | Type | Description | Example
+### Airport.ident
+
+Airport identificators
+
+Property | Type | Description | Example
 ---- | ---- | ---- | ---- | ----
-**no** | *Number* | Flight number without airline code. | `8403`
-**no_full** | *String* | Full flight number. | `"FR8403"`
+**iata** | *String* | IATA code - 3-letter IATA code of airport. | `"PRG"`
+**icao** | *String* | ICAO code - 3-letter ICAO code of airport. | `"LKPR"`
+**geonames** | *Number* | Geonames ID | `6299654`
 
-#### Flight.airline
-&nbsp; | Type | Description | Example
+
+#### Example
+```javascript
+{
+  "icao": "LKPR",
+  "iata": "PRG",
+  "geonames": 6299654
+}
+```
+### Airport.aliases
+
+Property | Type | Description | Example
 ---- | ---- | ---- | ---- | ----
-**iata** | *String* | 2-letter IATA code of airline. | `"OK"`
-**icao** | *String* | 3-letter ICAO code of airline. | `"CSA"`
-**name** | *String* | Name of airline | `"Czech Airlines"`
+**lang** | *String* | Language - Three-letter ISO 639-3 language code. | `"en"`
+**value** | *String* | Value | `"Václav Havel Airport Prague"`
+**preferred** | *Boolean* | Preferred | `true`
+**historical** | *Boolean* | Historical - Historical names. | `null`
+**colloquial** | *Boolean* | Colloquial | `null`
 
-#### Flight.airport
-&nbsp; | Type | Description | Example
+
+#### Example
+```javascript
+{
+  "lang": "en",
+  "value": "Václav Havel Airport Prague",
+  "preferred": true
+}
+```
+### Airport.served
+
+Property | Type | Description | Example
 ---- | ---- | ---- | ---- | ----
-**iata** | *String* | 3-letter IATA code of airport. | `"PRG"`
-**icao** | *String* | 4-letter ICAO code of airport. | `"LKPR"`
-**name** | *String* | Name of airport. | `"Prague"`
-**terminal** | *String* | Airport terminal. | `"2"`
-**gate** | *String* | Airport gate. | `"A5"`
+**name** | *String* | Name - Name of city&#x2F;location. | `"Prague"`
+**geonames** | *Number* | Geonames ID | `3067696`
 
-#### Flight.times
-All times are in local time in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format, for example: `"03:33:01"` or less specific `"03:33"`.
 
-&nbsp; | Type | Description
----- | ---- | ---- | ----
-**std** | *String* | Scheduled time of departure.
-**sta** | *String* | Scheduled time of arrival.
-**etd** | *String* | Estimated time of departure.
-**eta** | *String* | Estimated time of arrival.
-**atd** | *String* | Actual time of departure.
-**ata** | *String* | Actual time of arrival.
-**rtd** | *String* | Runway time of departure - take-off.
-**rta** | *String* | Runway time of arrival - touch down.
-**gtd** | *String* | Gate time of departure - aircraft doors closed.
-**gta** | *String* | Gate time of arrival - aircraft doors open.
-**xtd** | *String* | Radar time of departure.
-**xta** | *String* | Radar time of arrival.
+#### Example
+```javascript
+{
+  "name": "Prague",
+  "geonames": 3067696
+}
+```
+### Airport.runways
 
-#### Flight.aircraft
-&nbsp; | Type | Description | Example
+Property | Type | Description | Example
 ---- | ---- | ---- | ---- | ----
-**model** | *String* | Model of aircraft. | `"738"`
-**reg** | *String* | Aircraft registration number. | `"OK-FUN"`
+**direction** | *String* | Direction - Runway direction. | `"06/24"`
+**length** | *Number* | Length - Runway length in feets. | `null`
+**size** | *String* | Size - Runway dimensions in feets (length x width). | `"12191x197"`
+**surface** | *String* | Surface - Type of surface. | `"concrete"`
+**active** | *Boolean* | Active? | `true`
 
-#### Flight.status
-&nbsp; | Type | Description | Example
+#### Enum `surface`
+* concrete
+* asphaltic-concrete
+* asphalt
+
+#### Example
+```javascript
+{
+  "direction": "06/24",
+  "size": "12191x197",
+  "surface": "concrete",
+  "active": true
+}
+```
+### Airport.helipads
+
+Property | Type | Description | Example
 ---- | ---- | ---- | ---- | ----
-**code** | *String* | Code of status, see below. | `"departed"`
-**msg** | *String* | Status message. | `"Flight cancelled due to bad weather."`
-**delay** | *Number* | Delay in minutes. | `14`
-**time**| *String* | Datetime of current status in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601). | `"2015-03-26T03:33:24.680"`
+**number** | *String* | Number | `"H2"`
+**length** | *Number* | Length - ft | `11.2`
+**surface** | *String* | Surface - Type of surface. | `"asphalt"`
 
-##### Available statuses:
+#### Enum `surface`
+* concrete
+* asphaltic-concrete
+* asphalt
 
-* `checkin`
-* `gateopen`
-* `gatechange`
-* `boarding`
-* `lastcall`
-* `finalcall`
-* `gateclose`
-* `taxiing`
-* `departed`
-* `approaching`
-* `landing`
-* `landed`
-* `cancelled`
-* `diverted`
-* `delayed`
+#### Example
+```javascript
+{
+  "number": "H2",
+  "length": 11.2,
+  "surface": "asphalt"
+}
+```
+### Airport.terminals
 
-#### Flight.params
-&nbsp; | Type | Description | Example
+Property | Type | Description | Example
 ---- | ---- | ---- | ---- | ----
-**soldout** | *Boolean* | If the flight is sold out. | `true`
-**cancelled** | *Boolean* | Cancelled flight. | `true`
-**diverted** | *Boolean* | Diverted flight. | `true`
-**delayed** | *Boolean* | If the flight is delayed more than 15 minutes. | `true`
-**flying** | *Boolean* | If the flight is in air. | `true`
+**name** | *String* | Name - Terminal name. | `"Terminal 1"`
+**alias** | *String* | Alias - Terminal alias or shortname. | `"T1"`
+**public** | *Boolean* | Public - Its public terminal? | `true`
+**coords** | *Array [number]* | Coordinates - Location coordinates of terminal. | `null`
+**features** | *String* | Features - Terminal features. | `null`
 
-#### Flight.stats
-&nbsp; | Type | Description | Example
+#### Enum `features`
+* free-wifi
+* payable-wifi
+* open-nonstop
+* sleep-forbidden
+
+#### Example
+```javascript
+{
+  "name": "Terminal 1",
+  "alias": "T1",
+  "public": true
+}
+```
+### Airport.website
+
+Property | Type | Description | Example
 ---- | ---- | ---- | ---- | ----
-**seats_sold** | *Number* | Number of sold seats. | `43`
-**seats_available** | *Number* | Number of available seats | `180`
-**load_factor** | *Number* | Load factor in percents. | `50`
-**pax** | *Number* | Number of passengers boarded on aircraft. | `155`
-**pilots** | *Number* | Number of pilots. | `2`
-**crew** | *Number* | Number of crew without pilots. | `4`
-**crew_all** | *Number* | Number of all crew including pilots. | `6`
+**url** | *String* | URL | `"http://www.prg.aero/en/"`
+**url_mobile** | *String* | Mobile URL - URL to mobile version of web. | `"http://m.prg.aero/en/"`
+**mobile_ready** | *Boolean* | Mobile ready? | `null`
+**languages** | *Array [Object [Airport.website.languages](#Airport.website.languages)]* | Languages - Website languages. | `[{"lang":"cs","url":"http://www.prg.aero/cs/","url_mobile":"http://m.prg.aero/cs/","primary":true},{"lang":"en","url":"http://www.prg.aero/en/","url_mobile":"http://m.prg.aero/en/"},{"lang":"ru","url":"http://www.prg.aero/ru/","url_mobile":"http://m.prg.aero/ru/"}]`
+**features** | *Array [string]* | Features - Website features. | `["sms-info","webcam","map"]`
 
-#### Flight.rt
-&nbsp; | Type | Description | Example
+
+#### Example
+```javascript
+{
+  "url": "http://www.prg.aero/en/",
+  "url_mobile": "http://m.prg.aero/en/",
+  "languages": [
+    {
+      "lang": "cs",
+      "url": "http://www.prg.aero/cs/",
+      "url_mobile": "http://m.prg.aero/cs/",
+      "primary": true
+    },
+    {
+      "lang": "en",
+      "url": "http://www.prg.aero/en/",
+      "url_mobile": "http://m.prg.aero/en/"
+    },
+    {
+      "lang": "ru",
+      "url": "http://www.prg.aero/ru/",
+      "url_mobile": "http://m.prg.aero/ru/"
+    }
+  ],
+  "features": [
+    "sms-info",
+    "webcam",
+    "map"
+  ]
+}
+```
+### Airport.website.languages
+
+Property | Type | Description | Example
 ---- | ---- | ---- | ---- | ----
-**coords** | *Array Coordinate* | Coordinates in latitude and longitude. | `[ 50.0833, 14.4167 ]`
-**alt** | *Number* | Altitude in feets. | `25525`
-**speed** | *Number* | Speed in knots. | `470`
-**track** | *Number* | Current track. | `160`
-**squawk** | *Number* | Current [Squawk code](http://en.wikipedia.org/wiki/Squawk_code). | `2024`
+**lang** | *String* |  | `null`
+**url** | *String* |  | `null`
+**url_mobile** | *String* |  | `null`
+**primary** | *Boolean* |  | `null`
 
+
+#### Example
+```javascript
+null
+```
+### Airport.refs
+
+Property | Type | Description | Example
+---- | ---- | ---- | ---- | ----
+**type** | *String* | Type - Type of reference. | `"wikipedia"`
+**value** | *String* | Value | `"http://en.wikipedia.org/wiki/V%C3%A1clav_Havel_Airport_Prague"`
+
+
+#### Example
+```javascript
+{
+  "type": "wikipedia",
+  "value": "http://en.wikipedia.org/wiki/V%C3%A1clav_Havel_Airport_Prague"
+}
+```
+### Airport.waiting_times
+
+Property | Type | Description | Example
+---- | ---- | ---- | ---- | ----
+**security** | *Array [Object [Airport.waiting_times.times](#Airport.waiting_times.times)]* | Security | `[{"terminal":"T1","time":"<10"},{"terminal":"T2","area":"left","time":2},{"terminal":"T2","area":"right","time":"<15"}]`
+
+
+#### Example
+```javascript
+{
+  "security": [
+    {
+      "terminal": "T1",
+      "time": "<10"
+    },
+    {
+      "terminal": "T2",
+      "area": "left",
+      "time": 2
+    },
+    {
+      "terminal": "T2",
+      "area": "right",
+      "time": "<15"
+    }
+  ]
+}
+```
+### Airport.waiting_times.times
+
+Property | Type | Description | Example
+---- | ---- | ---- | ---- | ----
+**terminal** | *String* | Terminal | `null`
+**area** | *String* | Area | `null`
+**time** | *String or Number* | Waiting time - in minutes | `null`
+
+
+#### Example
+```javascript
+null
+```
+### Airport.webcams
+
+Property | Type | Description | Example
+---- | ---- | ---- | ---- | ----
+**name** | *String* | Name - Name of webcam | `null`
+**terminal** | *String* | Terminal - Terminal name or alias. | `"T1"`
+**fps** | *Number* | FPS - Frames per second. | `0.33`
+**resolution** | *String* | Resolution - Resolution in pixels. | `"704x480"`
+**url** | *String* | URL | `"http://www.prg.aero/en/prague-airport/webcam/"`
+**raw_url** | *String* | Raw URL | `"http://apollo.prg.aero/kamera/image.jpg"`
+
+
+#### Example
+```javascript
+{
+  "terminal": "T1",
+  "fps": 0.33,
+  "resolution": "704x480",
+  "raw_url": "http://apollo.prg.aero/kamera/image.jpg",
+  "url": "http://www.prg.aero/en/prague-airport/webcam/"
+}
+```
+### Airport.apps
+
+Property | Type | Description | Example
+---- | ---- | ---- | ---- | ----
+**platform** | *String* | Platform - Platform of application. | `"android"`
+**id** | *String or Number* | ID - Application ID. | `"cz.sw.upis.upisand"`
+**url** | *String* | URL - Link to application. | `"https://play.google.com/store/apps/details?id=cz.sw.upis.upisand"`
+
+#### Enum `platform`
+* ios
+* android
+* wp
+* firefox
+* blackberry
+* linux
+* osx
+* windows
+
+#### Example
+```javascript
+{
+  "platform": "android",
+  "id": "cz.sw.upis.upisand",
+  "url": "https://play.google.com/store/apps/details?id=cz.sw.upis.upisand"
+}
+```
+### Airport.opening_hours
+
+Property | Type | Description | Example
+---- | ---- | ---- | ---- | ----
+**days** | *String* | Days - Days in week. | `"all"`
+**times** | *String* | Times - Opening time. | `"00:00-24:00"`
+
+
+#### Example
+```javascript
+{
+  "days": "all",
+  "times": "00:00-24:00"
+}
+```
 
 
