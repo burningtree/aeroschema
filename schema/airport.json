@@ -79,10 +79,6 @@
           "title": "ICAO code",
           "description": "3-letter ICAO code of airport.",
           "type": "string"
-        },
-        "geonames": {
-          "title": "Geonames ID",
-          "type": "number"
         }
       }
     },
@@ -365,7 +361,18 @@
             "type": "string"
           },
           "value": {
-            "title": "Value",
+            "title": "Reference value",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
+          },
+          "url": {
+            "title": "URL of reference",
             "type": "string"
           }
         }

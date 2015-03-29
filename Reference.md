@@ -310,7 +310,7 @@ Property | Type | Description | Example
 **helipads** | *Array [Object [Airport.helipads](#Airport.helipads)]* | Helipads - Info about airport helipads. | `[{"number":"H2","length":11.2,"surface":"asphalt"}]`
 **terminals** | *Array [Object [Airport.terminals](#Airport.terminals)]* | Terminals - Airport terminals. | `[{"name":"Terminal 1","alias":"T1","public":true},{"name":"Terminal 2","alias":"T2","public":true},{"name":"Terminal 3","alias":"T3","public":false},{"name":"Terminal 4","alias":"T4","public":false}]`
 **website** | *String or Object [Airport.website](#Airport.website)* | Website - Airport website. | `{"url":"http://www.prg.aero/en/","url_mobile":"http://m.prg.aero/en/","languages":[{"lang":"cs","url":"http://www.prg.aero/cs/","url_mobile":"http://m.prg.aero/cs/","primary":true},{"lang":"en","url":"http://www.prg.aero/en/","url_mobile":"http://m.prg.aero/en/"},{"lang":"ru","url":"http://www.prg.aero/ru/","url_mobile":"http://m.prg.aero/ru/"}],"features":["sms-info","webcam","map"]}`
-**refs** | *Array [Object [Airport.refs](#Airport.refs)]* | References | `[{"type":"wikipedia","value":"http://en.wikipedia.org/wiki/V%C3%A1clav_Havel_Airport_Prague"}]`
+**refs** | *Array [Object [Airport.refs](#Airport.refs)]* | References | `[{"type":"wikipedia/en","value":296099,"url":"http://en.wikipedia.org/wiki/V%C3%A1clav_Havel_Airport_Prague"},{"type":"wikipedia/cs","value":13630,"url":"http://cs.wikipedia.org/wiki/Leti%C5%A1t%C4%9B_V%C3%A1clava_Havla_Praha"},{"type":"foursquare","value":"4adcdaa8f964a520824f21e3","url":"https://foursquare.com/v/leti%C5%A1t%C4%9B-v%C3%A1clava-havla--v%C3%A1clav-havel-airport-prg/4adcdaa8f964a520824f21e3"}]`
 **waiting_times** | *Object [Airport.waiting_times](#Airport.waiting_times)* | Waiting times | `{"security":[{"terminal":"T1","time":"<10"},{"terminal":"T2","area":"left","time":2},{"terminal":"T2","area":"right","time":"<15"}]}`
 **webcams** | *Array [Object [Airport.webcams](#Airport.webcams)]* | Webcams - Webcams at airport. | `[{"terminal":"T1","fps":0.33,"resolution":"704x480","raw_url":"http://apollo.prg.aero/kamera/image.jpg","url":"http://www.prg.aero/en/prague-airport/webcam/"}]`
 **apps** | *Array [Object [Airport.apps](#Airport.apps)]* | Applications | `[{"platform":"android","id":"cz.sw.upis.upisand","url":"https://play.google.com/store/apps/details?id=cz.sw.upis.upisand"},{"platform":"ios","id":581517376,"url":"https://itunes.apple.com/us/app/prague-airport-letiste-praha/id581517376"}]`
@@ -440,8 +440,19 @@ Property | Type | Description | Example
   },
   "refs": [
     {
-      "type": "wikipedia",
-      "value": "http://en.wikipedia.org/wiki/V%C3%A1clav_Havel_Airport_Prague"
+      "type": "wikipedia/en",
+      "value": 296099,
+      "url": "http://en.wikipedia.org/wiki/V%C3%A1clav_Havel_Airport_Prague"
+    },
+    {
+      "type": "wikipedia/cs",
+      "value": 13630,
+      "url": "http://cs.wikipedia.org/wiki/Leti%C5%A1t%C4%9B_V%C3%A1clava_Havla_Praha"
+    },
+    {
+      "type": "foursquare",
+      "value": "4adcdaa8f964a520824f21e3",
+      "url": "https://foursquare.com/v/leti%C5%A1t%C4%9B-v%C3%A1clava-havla--v%C3%A1clav-havel-airport-prg/4adcdaa8f964a520824f21e3"
     }
   ],
   "waiting_times": {
@@ -500,7 +511,6 @@ Property | Type | Description | Example
 ---- | ---- | ---- | ---- | ----
 **iata** | *String* | IATA code - 3-letter IATA code of airport. | `"PRG"`
 **icao** | *String* | ICAO code - 3-letter ICAO code of airport. | `"LKPR"`
-**geonames** | *Number* | Geonames ID | `6299654`
 
 
 #### Example
@@ -673,15 +683,17 @@ null
 
 Property | Type | Description | Example
 ---- | ---- | ---- | ---- | ----
-**type** | *String* | Type - Type of reference. | `"wikipedia"`
-**value** | *String* | Value | `"http://en.wikipedia.org/wiki/V%C3%A1clav_Havel_Airport_Prague"`
+**type** | *String* | Type - Type of reference. | `"wikipedia/en"`
+**value** | *String or Number* | Reference value | `296099`
+**url** | *String* | URL of reference | `"http://en.wikipedia.org/wiki/V%C3%A1clav_Havel_Airport_Prague"`
 
 
 #### Example
 ```javascript
 {
-  "type": "wikipedia",
-  "value": "http://en.wikipedia.org/wiki/V%C3%A1clav_Havel_Airport_Prague"
+  "type": "wikipedia/en",
+  "value": 296099,
+  "url": "http://en.wikipedia.org/wiki/V%C3%A1clav_Havel_Airport_Prague"
 }
 ```
 ### Airport.waiting_times

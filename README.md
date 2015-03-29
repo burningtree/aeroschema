@@ -22,14 +22,31 @@ All schemas are defined in [JSON Schema](http://json-schema.org) format and can 
 - **AircraftModel** - planned
 - **AircraftSeating** - planned
 - **Airline** - in progress
+- **AirlineStatistics** - planned
 - **[Airport](Reference.md#airport)** ([json](schema/airport.json))
+- **AirportStatistics** - planned
 - **BoardingPass** - planned
 - **[Flight](Reference.md#flight)** ([json](schema/flight.json))
 - **Incident** - planned
 - **Reservation** - planned
 
 ## Resources
-### Related datasets
+
+### Specifications
+* [IATA Delay Codes (IATA AHM730)](https://www.eurocontrol.int/sites/default/files/content/documents/official-documents/facts-and-figures/coda-reports/standard-iata-delay-codes-ahm730.pdf)
+* [IATA Delay Sub-Codes (IATA AHM731)](https://www.eurocontrol.int/sites/default/files/content/documents/official-documents/facts-and-figures/coda-reports/iata_delay_sub_code_list_ahm731.pdf)
+* [AIP - Aeronautical Information Publication](http://en.wikipedia.org/wiki/Aeronautical_Information_Publication)
+
+### Datasets
+
+#### Airlines
+* [IATA Airline Members](http://www.iata.org/about/members/pages/airline-list.aspx?All=true) - All IATA Member Airlines (2-letter IATA designator and 3-digit code)
+
+#### Regional aviation databases
+* [Eurocontrol - Useful links for statistics data](https://www.eurocontrol.int/articles/useful-links-statistics-data) - Links to statistics data in EU region.
+* [UK Civil Aviation Authority](http://www.caa.co.uk/default.aspx?catid=80&pagetype=90) - UK Airline/Airport statistics
+
+#### Geography
 - [mledoze/countries](https://github.com/mledoze/countries) - World countries in JSON
 - [GeoNames](http://www.geonames.org/) - Geographical database
 

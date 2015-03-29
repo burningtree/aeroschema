@@ -1,0 +1,28 @@
+title: Reference
+oneOf:
+  - title: 'Wikipedia - English'
+    type: object
+    properties:
+      type:
+        enum: [ wikipedia/en ]
+      value:
+        type: number
+  - title: 'GeoNames'
+    type: object
+    properties:
+      type:
+        enum: [ geonames ]
+      value:
+        type: number
+  - title: 'Foursquare'
+    type: object
+    properties:
+      type:
+        enum: [ foursquare ]
+      value:
+        type: string
+properties:
+  type:
+    type: string
+  url:
+    type: string

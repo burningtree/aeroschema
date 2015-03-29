@@ -19,6 +19,6 @@
   "dependencies": {
     "grunt": "^0.4.5",
     "grunt-tv4": "^0.4.1",
-    "grunt-yaml": "^0.4.1",
+    "grunt-yaml": "^0.4.1"
   }
 }

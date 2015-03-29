@@ -59,9 +59,6 @@ properties:
         title: ICAO code
         description: 3-letter ICAO code of airport.
         type: string
-      geonames:
-        title: Geonames ID
-        type: number
   name:
     title: Name
     description: Name of airport.
@@ -277,7 +274,12 @@ properties:
           description: Type of reference.
           type: string
         value:
-          title: Value
+          title: Reference value
+          oneOf:
+            - type: string
+            - type: number
+        url: 
+          title: URL of reference
           type: string
   waiting_times:
     title: Waiting times

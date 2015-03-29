@@ -1,0 +1,35 @@
+{
+  "ident": "EGGW",
+  "reports": [
+    {
+      "period": "year",
+      "movements": {
+        "grand_total": 101950,
+        "air_transport": 76260,
+        "air_taxi": 4924,
+        "positioning_flights": 597,
+        "local_movements": 0,
+        "test_and_training": 360,
+        "other_flights": 1,
+        "aero_club": 0,
+        "private_flights": 0,
+        "official": 0,
+        "military": 0,
+        "business_aviation": 245
+      },
+      "atms": {
+        "grand_total": 75616,
+        "scheduled": {
+          "uk_operators": 37413,
+          "eu_operators": 30842,
+          "overseas_operators": 1525
+        },
+        "charter": {
+          "uk_operators": 3737,
+          "eu_operators": 1932,
+          "overseat_operator": 167
+        }
+      }
+    }
+  ]
+}

@@ -74,8 +74,15 @@ website:
     - webcam
     - map
 refs:
-  - type: wikipedia
-    value: 'http://en.wikipedia.org/wiki/V%C3%A1clav_Havel_Airport_Prague'
+  - type: wikipedia/en
+    value: 296099
+    url: 'http://en.wikipedia.org/wiki/V%C3%A1clav_Havel_Airport_Prague'
+  - type: wikipedia/cs
+    value: 13630
+    url: 'http://cs.wikipedia.org/wiki/Leti%C5%A1t%C4%9B_V%C3%A1clava_Havla_Praha'
+  - type: foursquare
+    value: '4adcdaa8f964a520824f21e3' 
+    url: 'https://foursquare.com/v/leti%C5%A1t%C4%9B-v%C3%A1clava-havla--v%C3%A1clav-havel-airport-prg/4adcdaa8f964a520824f21e3'
 waiting_times:
   security:
     - terminal: T1
