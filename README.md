@@ -46,6 +46,9 @@ All schemas are defined in [JSON Schema](http://json-schema.org) format and can 
 * [Eurocontrol - Useful links for statistics data](https://www.eurocontrol.int/articles/useful-links-statistics-data) - Links to statistics data in EU region.
 * [UK Civil Aviation Authority](http://www.caa.co.uk/default.aspx?catid=80&pagetype=90) - UK Airline/Airport statistics
 
+#### Airports data
+* [PHL Flight Information API](http://flightinfo.phlapi.com/) - A REST and WebSocket API for PHL Flight Information Data
+
 #### Geography
 - [mledoze/countries](https://github.com/mledoze/countries) - World countries in JSON
 - [GeoNames](http://www.geonames.org/) - Geographical database

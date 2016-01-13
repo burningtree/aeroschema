@@ -79,6 +79,10 @@
           "title": "ICAO code",
           "description": "3-letter ICAO code of airport.",
           "type": "string"
+        },
+        "geonames": {
+          "title": "GeoNames ID",
+          "type": "number"
         }
       }
     },
@@ -213,6 +217,14 @@
             "title": "Surface",
             "description": "Type of surface.",
             "$ref": "#/definitions/surface"
+          },
+          "features": {
+            "type": "string",
+            "enum": [
+              "ils1",
+              "ils2",
+              "ils3"
+            ]
           },
           "active": {
             "title": "Active?",
@@ -477,6 +489,16 @@
       "items": {
         "title": "Feature",
         "$ref": "#/definitions/features"
+      }
+    },
+    "security": {
+      "title": "Security",
+      "properties": {
+        "rffs_cat": {
+          "type": "number",
+          "max": 10,
+          "min": 1
+        }
       }
     },
     "opening_hours": {

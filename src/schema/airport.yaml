@@ -59,6 +59,9 @@ properties:
         title: ICAO code
         description: 3-letter ICAO code of airport.
         type: string
+      geonames:
+        title: GeoNames ID
+        type: number
   name:
     title: Name
     description: Name of airport.
@@ -165,6 +168,12 @@ properties:
           title: Surface
           description: Type of surface.
           $ref: "#/definitions/surface"
+        features:
+          type: string
+          enum:
+            - ils1  # ILS CAT-I
+            - ils2  # ILS CAT-II
+            - ils3  # ILS CAT-III
         active:
           title: Active?
           type: boolean
@@ -356,6 +365,16 @@ properties:
     items:
       title: Feature
       $ref: "#/definitions/features"
+  security:
+    title: Security
+    properties:
+      rffs_cat:
+        # ICAO Annex 14 - ICAO RFFS (Rescue Fire Fighting Service) Category
+        # http://www.boeing.com/assets/pdf/commercial/airports/faqs/aircraftarff.pdf
+        type: number
+        max: 10
+        min: 1
+
   opening_hours:
     title: Opening hours
     type: array

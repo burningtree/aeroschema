@@ -25,6 +25,8 @@ aliases:
 features:
   - free-wifi
   - open-nonstop
+security:
+  rffs_cat: 10
 terminals:
   - name: Terminal 1
     alias: T1

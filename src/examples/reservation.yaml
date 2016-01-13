@@ -1,0 +1,44 @@
+ident:
+  pnr: LSSK8E
+flights:
+  0:
+    flight: FR2620
+    date: 03-02-2016
+    airline:
+      iata: FR
+    orig:
+      iata: MLA
+    dest:
+      iata: TRN
+    times:
+      std: 12:50
+      sta: 14:55
+  1:
+    flight: FR2621
+    date: 06-02-2016
+    airline: 
+      iata: FR
+    orig:
+      iata: TRN
+    dest:
+      iata: MLA
+    times:
+      std: 15:20
+      sta: 17:10
+passengers:
+  0:
+    firstname: Zuzana
+    lastname: Vlckova    
+return: true
+paid: true
+status: confirmed
+price:
+  value: 12088
+  currency: HUF
+payment:
+  type: card
+  card_type: Mastercard Debit
+  card_suffix: 4790
+contacts:
+  email: jan.stransky@arnal.cz
+created: 2015-11-08T21:30+2
